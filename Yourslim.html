@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>优膳轻食 Yourslim | 健康轻食品牌</title>
+    <meta name="description" content="优膳轻食专注健康便捷功能餐，提供低脂沙拉、果茶、创意轻食。济南轻食品牌，欢迎加盟。">
+    <meta name="keywords" content="轻食,健康餐,沙拉,优膳轻食,Yourslim,济南轻食">
+    <meta name="author" content="优膳轻食">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #fefaf5;
+            color: #2c3e2f;
+            line-height: 1.5;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9ecef;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7d9d76;
+            border-radius: 8px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 48px;
+            height: 72px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2b6e2f, #5a9e4b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: #3c8742;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #2c5230;
+            transition: color 0.2s;
+            padding-bottom: 4px;
+        }
+
+        nav ul li a:hover {
+            color: #3e8e41;
+        }
+
+        .banner {
+            margin-top: 72px;
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            min-height: 480px;
+            overflow: hidden;
+            background: #eef2e6;
+        }
+
+        .slides-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide-item {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .banner-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #2e7d32;
+        }
+        .btn-prev { left: 20px; }
+        .btn-next { right: 20px; }
+
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 10;
+        }
+        .banner-dots span {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .banner-dots span.active {
+            background: #fff;
+            width: 24px;
+            border-radius: 12px;
+        }
+
+        .section {
+            padding: 80px 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2b5e2f;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+        .section h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #7cb342;
+            margin: 12px auto 0;
+        }
+
+        .mission {
+            background: #ffffff;
+            border-radius: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .brand-logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(135deg, #f9fef5, #f0f7ea);
+            padding: 16px 32px;
+            border-radius: 80px;
+            border: 1px solid #e2f0da;
+        }
+        .brand-logo-icon { font-size: 52px; }
+        .brand-logo-text {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2b6e2f, #5a9e4b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .brand-slogan { font-size: 14px; color: #7d9d76; margin-top: 4px; }
+        
+        .mission p {
+            font-size: 1.2rem;
+            max-width: 760px;
+            margin: 28px auto 0;
+            color: #3e5a40;
+            line-height: 1.7;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.35s;
+            box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 36px -14px rgba(65, 95, 55, 0.2);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px 20px 24px;
+        }
+        .product-info h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2d4a2c;
+            margin-bottom: 8px;
+        }
+        .product-info p {
+            color: #6c7a67;
+            font-size: 0.95rem;
+        }
+
+        .join {
+            background: linear-gradient(120deg, #eef5e8, #e2f0dc);
+            border-radius: 56px;
+            margin: 40px auto;
+        }
+        .join p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #2c5430;
+        }
+        .join-btn {
+            display: inline-block;
+            margin-top: 32px;
+            background: #3c8742;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .join-btn:hover { background: #2d6e32; }
+
+        .contact {
+            background: #fffaf3;
+            border-radius: 48px;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 36px;
+            margin-top: 32px;
+        }
+        .contact-item {
+            background: #f6f9f2;
+            padding: 18px 28px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #355e36;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        footer {
+            background: #1e3a22;
+            color: #e0e9da;
+            text-align: center;
+            padding: 32px 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            nav { padding: 0 24px; }
+            nav ul { gap: 20px; }
+            .section { padding: 60px 24px; }
+            .section h2 { font-size: 1.8rem; }
+            .banner { height: 60vh; }
+            .brand-logo-text { font-size: 24px; }
+            .banner-btn { width: 36px; height: 36px; font-size: 24px; }
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 20px;
+            }
+            .banner { margin-top: 100px; }
+            .contact-info { flex-direction: column; align-items: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <span class="logo-icon">🥗</span>
+        <span>Yourslim · 优膳轻食</span>
+    </div>
+    <ul>
+        <li><a href="#mission">宗旨</a></li>
+        <li><a href="#products">产品</a></li>
+        <li><a href="#join">加盟</a></li>
+        <li><a href="#contact">联系</a></li>
+    </ul>
+</nav>
+
+<div class="banner">
+    <div class="slides-container">
+        <div class="slides" id="bannerSlides">
+            <div class="slide-item"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&h=900&fit=crop" alt="健康轻食"></div>
+            <div class="slide-item"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1600&h=900&fit=crop" alt="新鲜沙拉"></div>
+            <div class="slide-item"><img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=1600&h=900&fit=crop" alt="果茶轻食"></div>
+            <div class="slide-item"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1600&h=900&fit=crop" alt="蔬菜沙拉"></div>
+            <div class="slide-item"><img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=1600&h=900&fit=crop" alt="美味轻食"></div>
+        </div>
+    </div>
+    <div class="banner-btn btn-prev" id="prevBtn">‹</div>
+    <div class="banner-btn btn-next" id="nextBtn">›</div>
+    <div class="banner-dots" id="bannerDots"></div>
+</div>
+
+<section id="mission" class="section mission">
+    <div class="brand-logo-container">
+        <div class="brand-logo">
+            <span class="brand-logo-icon">🥗✨</span>
+            <div>
+                <div class="brand-logo-text">Yourslim 优膳轻食</div>
+                <div class="brand-slogan">轻养每一刻 · 自然有能量</div>
+            </div>
+        </div>
+    </div>
+    <h2>滋养初心 · 轻养理念</h2>
+    <p>优膳轻食深信食物是能量的诗篇。我们坚持「真实食材·轻负担·鲜活感」，<br>为都市快节奏人群定制兼具科学营养与风味的便捷餐食。<br>从农场到餐桌，还原蔬果本味，让健康成为一种触手可及的生活日常。</p>
+</section>
+
+<section id="products" class="section">
+    <h2>明星产品系列</h2>
+    <div class="products-grid">
+        <div class="product-card">
+            <img class="product-img" src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=400&fit=crop" alt="沁爽果茶">
+            <div class="product-info"><h3>沁爽果茶</h3><p>新鲜水果搭配冷萃茶底，0脂低卡，维C满杯。</p></div>
+        </div>
+        <div class="product-card">
+            <img class="product-img" src="https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="元气蔬果茶">
+            <div class="product-info"><h3>元气蔬果茶</h3><p>羽衣甘蓝·苹果·柠檬融合，清体焕活。</p></div>
+        </div>
+        <div class="product-card">
+            <img class="product-img" src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="光合沙拉碗">
+            <div class="product-info"><h3>光合沙拉碗</h3><p>8种时蔬+高蛋白鸡肉/虾仁，秘制油醋汁。</p></div>
+        </div>
+        <div class="product-card">
+            <img class="product-img" src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="罗勒低脂意面">
+            <div class="product-info"><h3>罗勒低脂意面</h3><p>全麦意面搭配青酱/番茄牛肉，饱腹不腻。</p></div>
+        </div>
+        <div class="product-card">
+            <img class="product-img" src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="五谷能量饭">
+            <div class="product-info"><h3>五谷能量饭</h3><p>糙米·藜麦·黑米，搭配低温慢煮鸡胸。</p></div>
+        </div>
+        <div class="product-card">
+            <img class="product-img" src="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="主厨创意盒">
+            <div class="product-info"><h3>主厨创意盒</h3><p>每周限定·融合墨西哥/地中海轻食灵感。</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="join" class="section join">
+    <h2>携手共创 · 轻食蓝海</h2>
+    <p>轻食赛道年增速超35%，优膳轻食以成熟供应链+品牌势能，助力伙伴快速启航。<br>总部提供：选址评估 / 标准化出餐 / 运营培训 / 数字化营销支持。0经验也可轻松经营。</p>
+    <a href="#contact" class="join-btn">📞 立即咨询加盟</a>
+</section>
+
+<section id="contact" class="section contact">
+    <h2>连接优膳 · 开启轻食之旅</h2>
+    <div class="contact-info">
+        <div class="contact-item"><span>💬</span> <span>微信客服: Yourslim_official</span></div>
+        <div class="contact-item"><span>📧</span> <span>合作邮箱: hello@yourslim.com</span></div>
+        <div class="contact-item"><span>📍</span> <span>品牌中心: 济南市章丘区经十东路116号</span></div>
+        <div class="contact-item"><span>📱</span> <span>官方抖音: 优膳轻食Yourslim</span></div>
+        <div class="contact-item"><span>🎵</span> <span>抖音号: Yourslim</span></div>
+    </div>
+    <p style="margin-top: 28px; font-size: 0.9rem; color: #6e8665;">周一至周日 9:00-20:00 竭诚为您服务 | 抖音每日分享轻食食谱</p>
+</section>
+
+<footer>
+    <p>© 2025 Yourslim 优膳轻食 | 让轻食成为享受 健康便捷功能餐倡导者</p>
+    <p style="font-size: 0.75rem; margin-top: 10px;">小组作业展示 | 健康轻食品牌概念站</p>
+</footer>
+
+<script>
+    (function() {
+        const slides = document.getElementById('bannerSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('bannerDots');
+        const slideItems = document.querySelectorAll('.slide-item');
+        const totalSlides = slideItems.length;
+        let currentIndex = 0;
+        let autoTimer = null;
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.addEventListener('click', () => { goToSlide(i); resetTimer(); });
+                dotsContainer.appendChild(dot);
+            }
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.banner-dots span');
+            dots.forEach((dot, idx) => {
+                idx === currentIndex ? dot.classList.add('active') : dot.classList.remove('active');
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = (index + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateDots();
+        }
+
+        function nextSlide() { goToSlide(currentIndex + 1); }
+        function prevSlide() { goToSlide(currentIndex - 1); }
+        function startTimer() { autoTimer = setInterval(() => nextSlide(), 5000); }
+        function resetTimer() { if (autoTimer) clearInterval(autoTimer); startTimer(); }
+
+        prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
+        nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
+
+        const banner = document.querySelector('.banner');
+        banner.addEventListener('mouseenter', () => { if (autoTimer) clearInterval(autoTimer); });
+        banner.addEventListener('mouseleave', () => { startTimer(); });
+
+        createDots();
+        goToSlide(0);
+        startTimer();
+
+        // 导航滚动
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const navHeight = document.querySelector('nav').offsetHeight;
+                        window.scrollTo({ top: target.offsetTop - navHeight - 10, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        document.querySelector('.logo').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        document.querySelector('.join-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+    })();
+</script>
+</body>
+</html>
